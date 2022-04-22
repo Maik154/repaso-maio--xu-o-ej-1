@@ -46,10 +46,6 @@ function displayCentros() {
         celdaCentro.appendChild(centro);
         fila.appendChild(celdaCentro);
         document.getElementById("tabla").appendChild(fila);
-        document.getElementById("y") = tal;
-        let x = "";
-
-        document.getElementById("y") = x;
     }
     /*for (let i in listadocentros) {
         if (listadocentros[i].localeCompare(nome) == 0) {
