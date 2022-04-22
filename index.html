@@ -1,0 +1,39 @@
+<html>
+  <head>
+    <meta http-equiv="x-ua-compatible" charset="UTF-8" content="IE=10" />
+    <title>Concurso de traslados</title>
+  </head>
+  <body>
+    <h1>Concurso de traslados</h1>
+    <p>
+      Nome do centro:
+      <input
+        type="text"
+        id="nomecentro"
+        onclick="limpiar('nome')"
+        onfocus="limpiar('nome')"
+      />
+    </p>
+    <p>
+      Posición:
+      <input type="text" id="pos" onclick="limpiar('pos')" onfocus="limpiar('pos')" />
+    </p>
+    <p>
+      <button id="start" onClick="modify('start');">Insertar Inicio</button>
+      <button id="insert" onClick="modify('insert');">
+        Insertar na posición
+      </button>
+      <button id="end" onClick="modify('end');">Insertar Final</button>
+      <button id="change" onClick="modify('change');">Cambiar posición</button>
+      <button id="delete" onClick="modify('del');">Borrar da posición</button>
+      <button id="prueba" onclick="displayCentros()">Display centros</button>
+    </p>
+    <table id="tabla" border="1">
+      <td id="indice">Índice</td>
+      <td id="centro">Centro</td>
+    </table>
+
+    <script type="text/javascript" src="arrays-listado-centros.js"></script>
+    <p id="Observaciones"></p>
+  </body>
+</html>
