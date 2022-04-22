@@ -12,23 +12,35 @@ function modify(action) {
                 window.alert("Campo do nome do centro vacío.");
             }
             break;
+
         case "insert":
-            insertarCentro(pos, nomeCentro);
+            if (!existeCentro(nomeCentro) && !isNaN(pos)) {
+                listadocentros.splice(pos - 1, 0, nomeCentro);
+            } else {
+                window.alert("Ya existe el centro," +
+                    "la posición está vacía o no es válida.");
+            }
             break;
+
         case "end":
+            if (!existeCentro(nomeCentro)) {
+                listadocentros.push(nomeCentro);
+            } else {
+                window.alert("Ya existe el centro.");
+            }
 
             break;
         case "change":
-
+            
             break;
         case "del":
-
+            
             break;
     }
     displayCentros();
     limpiar('nome');
     limpiar("pos");
-    
+
 }
 
 function displayCentros() {
@@ -58,16 +70,20 @@ function displayCentros() {
     */
 }
 
-function insertarCentro(pos, nomecentro) {
-    if (listadocentros.indexOf(nomecentro)) {
-        window.alert("El centro ya existe.")
+function existeCentro(nomecentro) {
+    if (listadocentros.indexOf(nomecentro) == -1 && nomecentro != "") {
+        return false;
+        //no existe
+    } else {
+        return true;
+        //efectivamente, existe
     }
 }
 
-function limpiar(limpiarQue){
-    if(limpiarQue.localeCompare("nome") == 0){
+function limpiar(limpiarQue) {
+    if (limpiarQue.localeCompare("nome") == 0) {
         document.getElementById("nomecentro").value = "";
-    }else if(limpiarQue.localeCompare("pos") == 0){
+    } else if (limpiarQue.localeCompare("pos") == 0) {
         document.getElementById("pos").value = "";
-    }  
+    }
 }
