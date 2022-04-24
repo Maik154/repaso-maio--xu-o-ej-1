@@ -1,4 +1,4 @@
-var listadocentros = ["IES DE TEIS", "IES DA GUÍA", "IES ROU", "IES POLITÉCNICO"];
+var listadocentros = ["IES DE TEIS", "IES DA GUIA", "IES ROU", "IES POLITECNICO"];
 displayCentros();
 
 function modify(action) {
@@ -26,21 +26,41 @@ function modify(action) {
             if (!existeCentro(nomeCentro)) {
                 listadocentros.push(nomeCentro);
             } else {
-                window.alert("Ya existe el centro.");
+                window.alert("Ya existe el centro o el campo está vacío.");
             }
-
             break;
         case "change":
-            
+            if (!existeCentro(nomeCentro) || nomeCentro == "" || isNaN(pos) || listadocentros.length < pos || pos <= 0) {
+                window.alert("El centro o la posición están vacías, el centro no existe o la posición no es válida.");
+            } else {
+                if (listadocentros[pos - 1].localeCompare(nomeCentro) == 0) {
+                    window.alert("La posición es la misma de donde ya estaba");
+                } else {
+                    listadocentros.splice(listadocentros.indexOf(nomeCentro), 1);
+                    listadocentros.splice(pos - 1, 0, nomeCentro);
+                }
+            }
             break;
         case "del":
-            
+            if (existeCentro(nomeCentro) && nomeCentro != "") {
+                listadocentros.splice(listadocentros.indexOf(nomeCentro), 1);
+            }else{
+                window.alert("El centro no existe o está vacío.");
+            }
             break;
     }
     displayCentros();
     limpiar('nome');
     limpiar("pos");
 
+}
+
+function existeCentro(nomecentro) {
+    if (listadocentros.indexOf(nomecentro) == -1) {
+        return false;
+    } else {
+        return true;
+    }
 }
 
 function displayCentros() {
@@ -59,26 +79,8 @@ function displayCentros() {
         fila.appendChild(celdaCentro);
         document.getElementById("tabla").appendChild(fila);
     }
-    /*for (let i in listadocentros) {
-        if (listadocentros[i].localeCompare(nome) == 0) {
-            window.alert("El centro ya existe.")
-        }
-        if (i == pos) {
-            window.alert("Esa posición ya está asignada.")
-        }
-    }
-    */
 }
 
-function existeCentro(nomecentro) {
-    if (listadocentros.indexOf(nomecentro) == -1 && nomecentro != "") {
-        return false;
-        //no existe
-    } else {
-        return true;
-        //efectivamente, existe
-    }
-}
 
 function limpiar(limpiarQue) {
     if (limpiarQue.localeCompare("nome") == 0) {
