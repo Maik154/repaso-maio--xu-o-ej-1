@@ -23,7 +23,7 @@ function modify(action) {
             break;
 
         case "end":
-            if (!existeCentro(nomeCentro)) {
+            if (!existeCentro(nomeCentro) && nomeCentro != "") {
                 listadocentros.push(nomeCentro);
             } else {
                 window.alert("Ya existe el centro o el campo está vacío.");
